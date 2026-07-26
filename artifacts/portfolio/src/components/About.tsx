@@ -67,11 +67,7 @@ export default function About() {
               </a>
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
-              <div className="bg-card border border-white/5 p-4 rounded-xl text-center hover:border-primary/30 transition-colors">
-                <div className="text-3xl font-bold text-primary mb-1">2+</div>
-                <div className="text-xs text-muted-foreground uppercase tracking-wider">Years Exp.</div>
-              </div>
+            <div className="grid grid-cols-2 gap-6">
               <div className="bg-card border border-white/5 p-4 rounded-xl text-center hover:border-primary/30 transition-colors">
                 <div className="text-3xl font-bold text-primary mb-1">10+</div>
                 <div className="text-xs text-muted-foreground uppercase tracking-wider">Projects</div>
