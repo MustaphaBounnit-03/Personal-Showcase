@@ -1,12 +1,9 @@
 import { motion } from 'framer-motion';
 import { 
   FaHtml5, FaCss3Alt, FaJs, FaReact, FaNodeJs, 
-  FaGitAlt, FaGithub, FaDocker, FaPython
+  FaGithub
 } from 'react-icons/fa';
-import { 
-  SiMongodb, SiExpress, SiTypescript, SiNextdotjs, 
-  SiPostgresql, SiTailwindcss 
-} from 'react-icons/si';
+import { SiMongodb, SiExpress } from 'react-icons/si';
 
 const PROFICIENT_SKILLS = [
   { name: 'HTML5', icon: <FaHtml5 className="text-[#E34F26]" /> },
@@ -19,14 +16,6 @@ const PROFICIENT_SKILLS = [
   { name: 'Git/GitHub', icon: <FaGithub className="text-white" /> },
 ];
 
-const LEARNING_SKILLS = [
-  { name: 'TypeScript', icon: <SiTypescript className="text-[#3178C6]" /> },
-  { name: 'Next.js', icon: <SiNextdotjs className="text-white" /> },
-  { name: 'PostgreSQL', icon: <SiPostgresql className="text-[#4169E1]" /> },
-  { name: 'Docker', icon: <FaDocker className="text-[#2496ED]" /> },
-  { name: 'Python', icon: <FaPython className="text-[#3776AB]" /> },
-  { name: 'TailwindCSS', icon: <SiTailwindcss className="text-[#06B6D4]" /> },
-];
 
 export default function Skills() {
   const containerVariants = {
@@ -88,36 +77,6 @@ export default function Skills() {
             </motion.div>
           </div>
 
-          <div>
-            <h3 className="text-xl font-semibold text-white mb-6 border-l-2 border-[#10b981] pl-4">Currently Learning</h3>
-            <motion.div 
-              className="grid grid-cols-2 md:grid-cols-4 gap-4"
-              variants={containerVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-            >
-              {LEARNING_SKILLS.map((skill) => (
-                <motion.div
-                  key={skill.name}
-                  variants={itemVariants}
-                  className="bg-card border border-white/5 rounded-lg p-4 flex items-center gap-4 hover:border-[#10b981]/40 hover:shadow-[0_0_15px_rgba(16,185,129,0.15)] transition-all duration-300 group relative overflow-hidden"
-                >
-                  <div className="absolute top-0 right-0 transform translate-x-2 -translate-y-2">
-                    <span className="inline-block bg-[#10b981]/10 text-[#10b981] text-[10px] font-bold px-2 py-1 rounded-bl-lg">
-                      Learning
-                    </span>
-                  </div>
-                  <div className="text-2xl group-hover:scale-110 transition-transform">
-                    {skill.icon}
-                  </div>
-                  <span className="font-medium text-sm text-gray-300 group-hover:text-white transition-colors">
-                    {skill.name}
-                  </span>
-                </motion.div>
-              ))}
-            </motion.div>
-          </div>
         </div>
       </div>
     </section>

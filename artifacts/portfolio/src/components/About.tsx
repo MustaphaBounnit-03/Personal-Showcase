@@ -48,10 +48,6 @@ export default function About() {
                 <span>March 28, 2005</span>
               </div>
               <div className="flex items-center gap-2 text-muted-foreground">
-                <span className="text-primary font-mono">Age:</span>
-                <span>21 years old</span>
-              </div>
-              <div className="flex items-center gap-2 text-muted-foreground">
                 <span className="text-primary font-mono">GitHub:</span>
                 <a href="https://github.com/MustaphaBounnit-03" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">MustaphaBounnit-03</a>
               </div>
