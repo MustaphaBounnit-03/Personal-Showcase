@@ -3,47 +3,41 @@ import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
 
 const PROJECTS = [
   {
-    title: 'E-Commerce Platform',
-    description: 'A full-featured online store with payment processing, user authentication, and an admin dashboard for inventory management.',
-    tech: ['React', 'Node.js', 'MongoDB', 'Stripe', 'Tailwind'],
+    title: 'Products Store Website',
+    description: 'A full-featured e-commerce website for browsing and purchasing products online, with a shopping cart, user authentication, order management, and an admin panel for inventory control.',
+    tech: ['React', 'Node.js', 'Express', 'MySQL', 'Tailwind CSS'],
     github: 'https://github.com/MustaphaBounnit-03',
     demo: 'https://github.com/MustaphaBounnit-03',
+    icon: (
+      <svg stroke="currentColor" fill="none" strokeWidth="1.5" viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+        <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/>
+      </svg>
+    ),
   },
   {
-    title: 'DevChat Application',
-    description: 'Real-time chat application for developers featuring channels, direct messaging, code snippets, and typing indicators.',
-    tech: ['Next.js', 'Socket.io', 'Express', 'PostgreSQL'],
+    title: 'Commercial Store System',
+    description: 'A desktop-style management system for retail shops, covering product catalog, stock tracking, sales recording, supplier management, and daily/monthly financial reports.',
+    tech: ['PHP', 'MySQL', 'JavaScript', 'HTML5', 'CSS3'],
     github: 'https://github.com/MustaphaBounnit-03',
     demo: 'https://github.com/MustaphaBounnit-03',
+    icon: (
+      <svg stroke="currentColor" fill="none" strokeWidth="1.5" viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+        <rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
+      </svg>
+    ),
   },
   {
-    title: 'Project Task Manager',
-    description: 'Kanban-style task management tool with drag-and-drop capabilities, team collaboration, and progress analytics.',
-    tech: ['React', 'Redux', 'Node.js', 'Framer Motion'],
+    title: 'Veterinary Clinic Website',
+    description: 'A complete web platform for a veterinary clinic, featuring appointment booking, patient animal records, owner profiles, treatment history, and a contact section for emergencies.',
+    tech: ['React', 'Node.js', 'Express', 'SQLite', 'Tailwind CSS'],
     github: 'https://github.com/MustaphaBounnit-03',
     demo: 'https://github.com/MustaphaBounnit-03',
+    icon: (
+      <svg stroke="currentColor" fill="none" strokeWidth="1.5" viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+        <path d="M11 4a1 1 0 1 0 2 0 1 1 0 0 0-2 0"/><path d="M15.5 6a1 1 0 1 0 2 0 1 1 0 0 0-2 0"/><path d="M6.5 6a1 1 0 1 0 2 0 1 1 0 0 0-2 0"/><path d="M4 12c0-3 2-5 4-5s3 1.5 4 1.5S13 7 15 7s4 2 4 5c0 4-3 7-7 7-1.5 0-3-1-4-1s-2.5 1-4 1c0 0-3-3-3-7z"/>
+      </svg>
+    ),
   },
-  {
-    title: 'Cyberpunk Portfolio',
-    description: 'This very website. A highly interactive, performant personal portfolio with a distinct cyberpunk aesthetic.',
-    tech: ['React', 'TailwindCSS', 'Framer Motion', 'Vite'],
-    github: 'https://github.com/MustaphaBounnit-03',
-    demo: 'https://github.com/MustaphaBounnit-03',
-  },
-  {
-    title: 'Weather App',
-    description: 'Location-based weather forecast app providing real-time data, hourly predictions, and interactive weather maps.',
-    tech: ['JavaScript', 'OpenWeather API', 'CSS Modules'],
-    github: 'https://github.com/MustaphaBounnit-03',
-    demo: 'https://github.com/MustaphaBounnit-03',
-  },
-  {
-    title: 'Finance Tracker',
-    description: 'Personal finance dashboard that visualizes income and expenses with interactive charts and automated categorization.',
-    tech: ['React', 'Recharts', 'Express', 'MongoDB'],
-    github: 'https://github.com/MustaphaBounnit-03',
-    demo: 'https://github.com/MustaphaBounnit-03',
-  }
 ];
 
 export default function Projects() {
