@@ -5,7 +5,7 @@ import {
   FaLinux, FaBug, FaLock, FaMobileAlt,
 } from 'react-icons/fa';
 import {
-  SiTailwindcss, SiExpress, SiMysql, SiSqlite, SiCsharp,
+  SiTailwindcss, SiExpress, SiMysql, SiSqlite, SiSharp,
 } from 'react-icons/si';
 import { MdDesignServices, MdApi } from 'react-icons/md';
 
@@ -30,7 +30,7 @@ const CATEGORIES = [
       { name: 'Express.js', icon: <SiExpress  className="text-white"     /> },
       { name: 'PHP',        icon: <FaPhp      className="text-[#777BB4]" /> },
       { name: 'Java',       icon: <FaJava     className="text-[#ED8B00]" /> },
-      { name: 'C#',         icon: <SiCsharp   className="text-[#239120]" /> },
+      { name: 'C#',         icon: <SiSharp    className="text-[#239120]" /> },
       { name: 'Python',     icon: <FaPython   className="text-[#3776AB]" /> },
     ],
   },
