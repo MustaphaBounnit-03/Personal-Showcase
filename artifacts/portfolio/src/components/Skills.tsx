@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react';
 import { motion } from 'framer-motion';
 import {
   FaHtml5, FaCss3Alt, FaJs, FaReact, FaNodeJs,
@@ -8,62 +9,77 @@ import {
   SiTailwindcss, SiExpress, SiMysql, SiSqlite, SiSharp,
 } from 'react-icons/si';
 import { MdDesignServices, MdApi } from 'react-icons/md';
+import { useLanguage } from '@/lib/i18n';
 
-const CATEGORIES = [
-  {
-    title: 'Frontend Development',
-    color: '#00d4ff',
-    skills: [
-      { name: 'React.js',           icon: <FaReact        className="text-[#61DAFB]" /> },
-      { name: 'JavaScript (ES6+)',   icon: <FaJs           className="text-[#F7DF1E]" /> },
-      { name: 'HTML5',              icon: <FaHtml5         className="text-[#E34F26]" /> },
-      { name: 'CSS3',               icon: <FaCss3Alt       className="text-[#1572B6]" /> },
-      { name: 'Tailwind CSS',       icon: <SiTailwindcss   className="text-[#06B6D4]" /> },
-      { name: 'Responsive Design',  icon: <FaMobileAlt     className="text-[#00d4ff]" /> },
-    ],
-  },
-  {
-    title: 'Backend Development',
-    color: '#a78bfa',
-    skills: [
-      { name: 'Node.js',    icon: <FaNodeJs   className="text-[#339933]" /> },
-      { name: 'Express.js', icon: <SiExpress  className="text-white"     /> },
-      { name: 'PHP',        icon: <FaPhp      className="text-[#777BB4]" /> },
-      { name: 'Java',       icon: <FaJava     className="text-[#ED8B00]" /> },
-      { name: 'C#',         icon: <SiSharp    className="text-[#239120]" /> },
-      { name: 'Python',     icon: <FaPython   className="text-[#3776AB]" /> },
-    ],
-  },
-  {
-    title: 'Databases',
-    color: '#fb923c',
-    skills: [
-      { name: 'MySQL',  icon: <SiMysql  className="text-[#4479A1]" /> },
-      { name: 'SQLite', icon: <SiSqlite className="text-[#44a8c4]" /> },
-    ],
-  },
-  {
-    title: 'Version Control & Collaboration',
-    color: '#f97316',
-    skills: [
-      { name: 'Git',    icon: <FaGit    className="text-[#F05032]" /> },
-      { name: 'GitHub', icon: <FaGithub className="text-white"     /> },
-    ],
-  },
-  {
-    title: 'Other Skills',
-    color: '#34d399',
-    skills: [
-      { name: 'UI/UX Design',      icon: <MdDesignServices className="text-[#f472b6]" /> },
-      { name: 'REST APIs',         icon: <MdApi            className="text-[#00d4ff]" /> },
-      { name: 'JWT Authentication',icon: <FaLock           className="text-[#fbbf24]" /> },
-      { name: 'Debugging',         icon: <FaBug            className="text-[#f87171]" /> },
-      { name: 'Linux',             icon: <FaLinux          className="text-[#FCC624]" /> },
-    ],
-  },
+const CATEGORY_COLORS = [
+  '#00d4ff',
+  '#a78bfa',
+  '#fb923c',
+  '#f97316',
+  '#34d399',
 ];
 
+const SKILL_ICONS: Record<string, ReactNode> = {
+  'React.js': <FaReact className="text-[#61DAFB]" />,
+  'JavaScript (ES6+)': <FaJs className="text-[#F7DF1E]" />,
+  HTML5: <FaHtml5 className="text-[#E34F26]" />,
+  CSS3: <FaCss3Alt className="text-[#1572B6]" />,
+  'Tailwind CSS': <SiTailwindcss className="text-[#06B6D4]" />,
+  'Responsive Design': <FaMobileAlt className="text-[#00d4ff]" />,
+  'Node.js': <FaNodeJs className="text-[#339933]" />,
+  'Express.js': <SiExpress className="text-white" />,
+  PHP: <FaPhp className="text-[#777BB4]" />,
+  Java: <FaJava className="text-[#ED8B00]" />,
+  'C#': <SiSharp className="text-[#239120]" />,
+  Python: <FaPython className="text-[#3776AB]" />,
+  MySQL: <SiMysql className="text-[#4479A1]" />,
+  SQLite: <SiSqlite className="text-[#44a8c4]" />,
+  Git: <FaGit className="text-[#F05032]" />,
+  GitHub: <FaGithub className="text-white" />,
+  'UI/UX Design': <MdDesignServices className="text-[#f472b6]" />,
+  'REST APIs': <MdApi className="text-[#00d4ff]" />,
+  'JWT Authentication': <FaLock className="text-[#fbbf24]" />,
+  Debugging: <FaBug className="text-[#f87171]" />,
+  Linux: <FaLinux className="text-[#FCC624]" />,
+};
+
 export default function Skills() {
+  const { t } = useLanguage();
+
+  const CATEGORIES = [
+    {
+      title: t.skills.categories.frontend,
+      skills: [
+        'React.js', 'JavaScript (ES6+)', 'HTML5', 'CSS3', 'Tailwind CSS', 'Responsive Design',
+      ],
+    },
+    {
+      title: t.skills.categories.backend,
+      skills: [
+        'Node.js', 'Express.js', 'PHP', 'Java', 'C#', 'Python',
+      ],
+    },
+    {
+      title: t.skills.categories.databases,
+      skills: ['MySQL', 'SQLite'],
+    },
+    {
+      title: t.skills.categories.versionControl,
+      skills: ['Git', 'GitHub'],
+    },
+    {
+      title: t.skills.categories.other,
+      skills: ['UI/UX Design', 'REST APIs', 'JWT Authentication', 'Debugging', 'Linux'],
+    },
+  ].map((category, index) => ({
+    ...category,
+    color: CATEGORY_COLORS[index],
+    skills: category.skills.map((name) => ({
+      name,
+      icon: SKILL_ICONS[name],
+    })),
+  }));
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: { opacity: 1, transition: { staggerChildren: 0.05 } },
@@ -84,10 +100,10 @@ export default function Skills() {
           viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Tech Stack</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">{t.skills.title}</h2>
           <div className="w-16 h-1 bg-primary mx-auto rounded-full mb-6"></div>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            The tools and technologies I use to bring ideas to life.
+            {t.skills.subtitle}
           </p>
         </motion.div>
 

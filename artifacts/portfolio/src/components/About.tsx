@@ -1,6 +1,8 @@
 import { motion } from 'framer-motion';
+import { useLanguage } from '@/lib/i18n';
 
 export default function About() {
+  const { t } = useLanguage();
   return (
     <section id="about" className="py-24 relative">
       <div className="container mx-auto px-6">
@@ -17,6 +19,8 @@ export default function About() {
               <img
                 src="/mustapha-photo.png"
                 alt="Mustapha Bounnit"
+                loading="lazy"
+                decoding="async"
                 className="w-full h-full object-cover object-top"
               />
             </div>
@@ -32,28 +36,28 @@ export default function About() {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-2">About Me</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-2">{t.about.title}</h2>
             <div className="w-16 h-1 bg-primary rounded-full mb-8"></div>
             
             <p className="text-muted-foreground text-lg mb-6 leading-relaxed">
-              I'm Mustapha Bounnit, a motivated computer science student and full-stack web developer with a profound passion for building modern, scalable web applications. 
+              {t.about.para1}
             </p>
             <p className="text-muted-foreground text-lg mb-6 leading-relaxed">
-              My journey in tech is driven by curiosity and a commitment to continuous learning. I thrive on solving complex problems and turning ideas into elegant code. Whether I'm designing a database architecture or fine-tuning CSS animations, I care deeply about the craft.
+              {t.about.para2}
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8 text-sm">
               <div className="flex items-center gap-2 text-muted-foreground">
-                <span className="text-primary font-mono">Birthday:</span>
-                <span>March 28, 2005</span>
+                <span className="text-primary font-mono">{t.about.birthday}</span>
+                <span>{t.about.birthdayValue}</span>
               </div>
               <div className="flex items-center gap-2 text-muted-foreground">
-                <span className="text-primary font-mono">GitHub:</span>
+                <span className="text-primary font-mono">{t.about.github}</span>
                 <a href="https://github.com/MustaphaBounnit-03" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">MustaphaBounnit-03</a>
               </div>
               <div className="flex items-center gap-2 text-muted-foreground">
-                <span className="text-primary font-mono">Status:</span>
-                <span>Open to opportunities</span>
+                <span className="text-primary font-mono">{t.about.status}</span>
+                <span>{t.about.statusValue}</span>
               </div>
             </div>
 
@@ -63,18 +67,18 @@ export default function About() {
                 download="Mustapha_Bounnit_CV.pdf"
                 className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground font-semibold rounded-md hover:bg-primary/90 hover:shadow-[0_0_15px_rgba(0,212,255,0.4)] transition-all duration-300 transform hover:-translate-y-1"
               >
-                Download CV
+                {t.about.downloadCv}
               </a>
             </div>
 
             <div className="grid grid-cols-2 gap-6">
               <div className="bg-card border border-white/5 p-4 rounded-xl text-center hover:border-primary/30 transition-colors">
                 <div className="text-3xl font-bold text-primary mb-1">10+</div>
-                <div className="text-xs text-muted-foreground uppercase tracking-wider">Projects</div>
+                <div className="text-xs text-muted-foreground uppercase tracking-wider">{t.about.projects}</div>
               </div>
               <div className="bg-card border border-white/5 p-4 rounded-xl text-center hover:border-primary/30 transition-colors">
                 <div className="text-3xl font-bold text-primary mb-1">15+</div>
-                <div className="text-xs text-muted-foreground uppercase tracking-wider">Technologies</div>
+                <div className="text-xs text-muted-foreground uppercase tracking-wider">{t.about.technologies}</div>
               </div>
             </div>
           </motion.div>

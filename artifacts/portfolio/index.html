@@ -2,23 +2,67 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
-    <title>Mustapha Bounnit Portfolio</title>
-    <meta name="description" content="Mustapha Bounnit Portfolio — built on Replit. Update this description to reflect the app." />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mustapha Bounnit — Full-Stack Developer Portfolio</title>
+    <script>
+      // Apply stored language before React mounts to avoid flash of wrong lang/title.
+      (function () {
+        try {
+          var stored = localStorage.getItem('portfolio-language');
+          if (stored === 'fr') {
+            document.documentElement.lang = 'fr';
+            document.title = 'Mustapha Bounnit — Développeur Full-Stack';
+          }
+        } catch (e) {}
+      })();
+    </script>
+    <meta name="description" content="Mustapha Bounnit — Full-Stack Developer & Software Engineer. Portfolio showcasing projects, skills, and services. Open to new opportunities." />
+    <meta name="keywords" content="Mustapha Bounnit, Full-Stack Developer, React Developer, Node.js, Portfolio, Software Engineer" />
+    <meta name="author" content="Mustapha Bounnit" />
     <meta name="robots" content="index, follow" />
-    <meta property="og:title" content="Mustapha Bounnit Portfolio" />
-    <meta property="og:description" content="Mustapha Bounnit Portfolio — built on Replit. Update this description to reflect the app." />
+    <meta name="theme-color" content="#0a0f1e" />
+    
+    <link rel="canonical" href="https://mustapha-bounnit.vercel.app/" />
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Mustapha Bounnit — Full-Stack Developer Portfolio" />
+    <meta property="og:description" content="Full-Stack Developer & Software Engineer. Portfolio showcasing projects, skills, and services." />
     <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://mustapha-bounnit.vercel.app/" />
+    <meta property="og:image" content="https://mustapha-bounnit.vercel.app/mustapha-photo.png" />
+    <meta property="og:site_name" content="Mustapha Bounnit Portfolio" />
+    
+    <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Mustapha Bounnit Portfolio" />
-    <meta name="twitter:description" content="Mustapha Bounnit Portfolio — built on Replit. Update this description to reflect the app." />
+    <meta name="twitter:title" content="Mustapha Bounnit — Full-Stack Developer Portfolio" />
+    <meta name="twitter:description" content="Full-Stack Developer & Software Engineer. Portfolio showcasing projects, skills, and services." />
+    <meta name="twitter:image" content="https://mustapha-bounnit.vercel.app/mustapha-photo.png" />
+    
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Mustapha Bounnit",
+      "url": "https://mustapha-bounnit.vercel.app/",
+      "image": "https://mustapha-bounnit.vercel.app/mustapha-photo.png",
+      "jobTitle": "Full-Stack Developer",
+      "email": "mustapha.bounnit.2005@gmail.com",
+      "sameAs": [
+        "https://github.com/MustaphaBounnit-03",
+        "https://www.linkedin.com/in/mustapha-bounnit-3407b2421/"
+      ],
+      "knowsAbout": ["Web Development", "React", "Node.js", "TypeScript", "MySQL", "Tailwind CSS"]
+    }
+    </script>
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
+

@@ -1,2 +1,5 @@
 User-agent: *
 Allow: /
+
+Sitemap: https://mustapha-bounnit.vercel.app/sitemap.xml
+

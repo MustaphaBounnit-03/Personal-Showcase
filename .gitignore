@@ -47,6 +47,19 @@ Thumbs.db
 # Replit
 .cache/
 .local/
-node_modules/ 
-.pnpm-store/ 
-dist/ 
+.pnpm-store/
+
+# Build artifacts
+dist/
+out-tsc/
+*.tsbuildinfo
+
+# Environment files
+# Keep .env.example tracked; ignore all other env files
+.env
+.env.local
+.env.*.local
+!.env.example
+
+# Logs
+*.log

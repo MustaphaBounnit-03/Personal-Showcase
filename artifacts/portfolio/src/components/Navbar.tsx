@@ -1,20 +1,34 @@
 import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useScroll, useSpring } from 'framer-motion';
 import { FaBars, FaTimes } from 'react-icons/fa';
-
-const NAV_LINKS = [
-  { name: 'Home', href: '#home' },
-  { name: 'About', href: '#about' },
-  { name: 'Services', href: '#services' },
-  { name: 'Portfolio', href: '#portfolio' },
-  { name: 'Skills', href: '#skills' },
-  { name: 'Contact', href: '#contact' },
-];
+import { useLanguage } from '@/lib/i18n';
+import type { Language } from '@/lib/translations';
 
 export default function Navbar() {
+  const { t, language, setLanguage } = useLanguage();
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const NAV_LINKS = [
+    { name: t.nav.home, href: '#home' },
+    { name: t.nav.about, href: '#about' },
+    { name: t.nav.services, href: '#services' },
+    { name: t.nav.portfolio, href: '#portfolio' },
+    { name: t.nav.skills, href: '#skills' },
+    { name: t.nav.contact, href: '#contact' },
+  ];
+
+  const switchLanguage = (next: Language) => {
+    setLanguage(next);
+  };
+
+  const { scrollYProgress } = useScroll();
+  const progress = useSpring(scrollYProgress, {
+    stiffness: 120,
+    damping: 30,
+    restDelta: 0.001,
+  });
 
   useEffect(() => {
     const handleScroll = () => {
@@ -61,6 +75,11 @@ export default function Navbar() {
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
     >
+      {/* Reading progress bar */}
+      <motion.div
+        style={{ scaleX: progress }}
+        className="absolute top-0 left-0 right-0 h-0.5 origin-left bg-primary shadow-[0_0_10px_rgba(0,212,255,0.8)]"
+      />
       <div className="container mx-auto px-6 flex items-center justify-between">
         <a 
           href="#home" 
@@ -74,7 +93,7 @@ export default function Navbar() {
         <nav className="hidden md:flex items-center gap-8">
           {NAV_LINKS.map((link) => (
             <a
-              key={link.name}
+              key={link.href}
               href={link.href}
               onClick={(e) => scrollToSection(e, link.href)}
               className={`text-sm font-medium tracking-wide transition-colors duration-300 relative ${
@@ -93,15 +112,51 @@ export default function Navbar() {
               )}
             </a>
           ))}
+
+          {/* Language Switcher */}
+          <div className="flex items-center gap-1 border border-white/10 rounded-full p-1 bg-card/60 backdrop-blur-sm">
+            {(['en', 'fr'] as const).map((lang) => (
+              <button
+                key={lang}
+                onClick={() => switchLanguage(lang)}
+                className={`px-3 py-1 text-xs font-bold uppercase rounded-full transition-all duration-300 ${
+                  language === lang
+                    ? 'bg-primary text-primary-foreground'
+                    : 'text-muted-foreground hover:text-white'
+                }`}
+                aria-pressed={language === lang}
+              >
+                {lang}
+              </button>
+            ))}
+          </div>
         </nav>
 
-        {/* Mobile Toggle */}
-        <button 
-          className="md:hidden text-white p-2"
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-        >
-          {mobileMenuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
-        </button>
+        {/* Mobile actions */}
+        <div className="md:hidden flex items-center gap-3">
+          <div className="flex items-center gap-1 border border-white/10 rounded-full p-1 bg-card/60 backdrop-blur-sm">
+            {(['en', 'fr'] as const).map((lang) => (
+              <button
+                key={lang}
+                onClick={() => switchLanguage(lang)}
+                className={`px-2.5 py-0.5 text-xs font-bold uppercase rounded-full transition-all duration-300 ${
+                  language === lang
+                    ? 'bg-primary text-primary-foreground'
+                    : 'text-muted-foreground hover:text-white'
+                }`}
+                aria-pressed={language === lang}
+              >
+                {lang}
+              </button>
+            ))}
+          </div>
+          <button 
+            className="text-white p-2"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          >
+            {mobileMenuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Nav */}

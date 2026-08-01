@@ -1,30 +1,21 @@
 import { motion } from 'framer-motion';
 import { FaCode, FaServer, FaPaintBrush, FaMobileAlt } from 'react-icons/fa';
+import { useLanguage } from '@/lib/i18n';
 
-const SERVICES = [
-  {
-    icon: <FaCode className="text-3xl text-primary" />,
-    title: 'Frontend Development',
-    description: 'Building responsive, accessible, and highly interactive user interfaces using modern frameworks like React and Next.js.'
-  },
-  {
-    icon: <FaServer className="text-3xl text-primary" />,
-    title: 'Backend Development',
-    description: 'Designing scalable APIs and robust server-side architectures using Node.js, Express, and modern databases.'
-  },
-  {
-    icon: <FaMobileAlt className="text-3xl text-primary" />,
-    title: 'Full-Stack Web Apps',
-    description: 'End-to-end development of complex web applications with seamless integration between frontend and backend.'
-  },
-  {
-    icon: <FaPaintBrush className="text-3xl text-primary" />,
-    title: 'UI/UX Implementation',
-    description: 'Translating design mockups into pixel-perfect, beautifully animated web experiences with a focus on craft.'
-  }
+const SERVICE_ICONS = [
+  <FaCode className="text-3xl text-primary" />,
+  <FaServer className="text-3xl text-primary" />,
+  <FaMobileAlt className="text-3xl text-primary" />,
+  <FaPaintBrush className="text-3xl text-primary" />,
 ];
 
 export default function Services() {
+  const { t } = useLanguage();
+  const SERVICES = t.services.items.map((item, index) => ({
+    ...item,
+    icon: SERVICE_ICONS[index],
+  }));
+
   return (
     <section id="services" className="py-24 bg-card/30">
       <div className="container mx-auto px-6">
@@ -35,10 +26,10 @@ export default function Services() {
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">What I Do</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">{t.services.title}</h2>
           <div className="w-16 h-1 bg-primary mx-auto rounded-full mb-6"></div>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            I offer a complete range of web development services, turning complex problems into elegant, performant solutions.
+            {t.services.subtitle}
           </p>
         </motion.div>
 

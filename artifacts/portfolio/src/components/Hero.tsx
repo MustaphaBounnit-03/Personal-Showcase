@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-
-const ROLES = ["Full-Stack Developer", "React Developer", "Node.js Developer"];
+import { useLanguage } from '@/lib/i18n';
 
 export default function Hero() {
+  const { t } = useLanguage();
+  const ROLES = t.hero.roles;
   const [roleIndex, setRoleIndex] = useState(0);
   const [displayText, setDisplayText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
@@ -30,7 +31,7 @@ export default function Hero() {
     }
 
     return () => clearTimeout(timeout);
-  }, [displayText, isDeleting, roleIndex]);
+  }, [displayText, isDeleting, roleIndex, ROLES]);
 
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
@@ -48,7 +49,7 @@ export default function Hero() {
             transition={{ duration: 0.5 }}
           >
             <h2 className="text-primary font-mono tracking-wider mb-4 uppercase text-sm md:text-base">
-              Welcome to my digital space
+              {t.hero.welcome}
             </h2>
           </motion.div>
 
@@ -58,7 +59,7 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
           >
-            I'm <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-white/70">Mustapha Bounnit</span>
+            {t.hero.name}
           </motion.h1>
 
           <motion.div 
@@ -79,8 +80,7 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
           >
-            Building exceptional, scalable, and responsive digital experiences.
-            Passionate about clean code and modern web technologies.
+            {t.hero.tagline}
           </motion.p>
 
           <motion.div 
@@ -97,15 +97,36 @@ export default function Hero() {
               }}
               className="w-full sm:w-auto px-8 py-3 bg-primary text-primary-foreground font-semibold rounded-md hover:bg-primary/90 hover:shadow-[0_0_15px_rgba(0,212,255,0.4)] transition-all duration-300 transform hover:-translate-y-1"
             >
-              View My Work
+              {t.hero.viewWork}
             </a>
             <a 
               href="/Mustapha_Bounnit_CV.pdf"
               download="Mustapha_Bounnit_CV.pdf"
               className="w-full sm:w-auto px-8 py-3 bg-card border border-white/10 text-white font-semibold rounded-md hover:border-primary/50 hover:bg-white/5 transition-all duration-300"
             >
-              Download CV
+              {t.hero.downloadCv}
             </a>
+          </motion.div>
+
+          {/* Quick stats */}
+          <motion.div
+            className="mt-14 grid grid-cols-3 gap-4 max-w-md mx-auto"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.5 }}
+          >
+            <div className="bg-card/60 border border-white/5 p-4 rounded-xl backdrop-blur-sm">
+              <div className="text-3xl font-bold text-primary mb-1">10+</div>
+              <div className="text-xs text-muted-foreground uppercase tracking-wider">{t.hero.projects}</div>
+            </div>
+            <div className="bg-card/60 border border-white/5 p-4 rounded-xl backdrop-blur-sm">
+              <div className="text-3xl font-bold text-primary mb-1">15+</div>
+              <div className="text-xs text-muted-foreground uppercase tracking-wider">{t.hero.technologies}</div>
+            </div>
+            <div className="bg-card/60 border border-white/5 p-4 rounded-xl backdrop-blur-sm">
+              <div className="text-3xl font-bold text-primary mb-1">4+</div>
+              <div className="text-xs text-muted-foreground uppercase tracking-wider">{t.hero.services}</div>
+            </div>
           </motion.div>
         </div>
       </div>
@@ -117,7 +138,7 @@ export default function Hero() {
         animate={{ opacity: 1 }}
         transition={{ delay: 1, duration: 1 }}
       >
-        <span className="text-xs tracking-widest text-muted-foreground uppercase mb-2">Scroll</span>
+        <span className="text-xs tracking-widest text-muted-foreground uppercase mb-2">{t.hero.scroll}</span>
         <div className="w-px h-12 bg-gradient-to-b from-primary/50 to-transparent"></div>
       </motion.div>
     </section>

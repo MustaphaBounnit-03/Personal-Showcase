@@ -1,4 +1,7 @@
+import { useLanguage } from '@/lib/i18n';
+
 export default function Footer() {
+  const { t } = useLanguage();
   const currentYear = new Date().getFullYear();
   
   return (
@@ -8,7 +11,7 @@ export default function Footer() {
           Mustapha<span className="text-primary">.</span>
         </a>
         <p className="text-sm text-muted-foreground">
-          © {currentYear} Mustapha Bounnit. All rights reserved.
+          © {currentYear} Mustapha Bounnit. {t.footer.rights}
         </p>
       </div>
     </footer>
